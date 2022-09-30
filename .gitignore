@@ -1,41 +1,123 @@
-# Compiled Lua sources
-luac.out
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("WOCKAN HUB v1.3                                   Made By WoXo#4508", "GrapeTheme")
 
-# luarocks build files
-*.src.rock
-*.zip
-*.tar.gz
+-- MAIN
+local Main = Window:NewTab("Main")
+local MainSection = Main:NewSection("                                      MAIN")
 
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
+MainSection:NewKeybind("Show/Hide GUI", "KeybindInfo", Enum.KeyCode.RightShift, function()
+	Library:ToggleUI()
+end)
 
-# Precompiled Headers
-*.gch
-*.pch
+--PLAYER
+local Player = Window:NewTab("Player")
+local PlayerSection = Player:NewSection("                                   PLAYER")
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
+PlayerSection:NewSlider("WalkSpeed", "Makes your character walk faster!", 500, 16, function(s) -- 500 (MaxValue) | 16 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+PlayerSection:NewSlider("JumpPower", "Makes your character jump higher!", 500, 50, function(s) -- 500 (MaxValue) | 50 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+PlayerSection:NewButton("Click Teleport Tool", "Gives you a click tp tool!", function()
+mouse = game.Players.LocalPlayer:GetMouse()
+tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "Click Teleport"
+tool.Activated:connect(function()
+local pos = mouse.Hit+Vector3.new(0,2.5,0)
+pos = CFrame.new(pos.X,pos.Y,pos.Z)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end)
+tool.Parent = game.Players.LocalPlayer.Backpack
+end)
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+PlayerSection:NewButton("Admin Commands (Fly, Noclip And More)", "Gives you admin commands!", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+end)
 
+-- GAMES 1
+local Games_1 = Window:NewTab("Games_1")
+local Games_1Section = Games_1:NewSection("                           GAMES_1 SCRIPTS")
+
+Games_1Section:NewButton("Lumber Tycoon 2", "Gives you a gui for Lumber Tycoon 2!", function()
+    if game.PlaceId == 13822889 then
+        loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/MilkMeNow123/NuggetHub./main/root.txt'))()
+        elseif game.PlaceId == 7551121821 then
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/thombomb2009/ok/main/Decaying%20Winter.lua'))()
+        elseif game.PlaceId == 537413528 then
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/thombomb2009/ok/main/Build%20A%20Boat%20For%20Treasure.lua'))()
+        elseif game.PlaceId == 1069951594 then
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/thombomb2009/butter-hub/main/Fall%20of%20Hell.txt'))()
+        elseif game.PlaceId == 189707 then
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/thombomb2009/butter-hub/main/Natueal%20Disaters.txt'))()
+        elseif game.PlaceId == 205224386 then
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/thombomb2009/butter-hub/main/Hide_and_Seek_Extreme.lua'))()
+        elseif game.PlaceId == 4965975642 then
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/thombomb2009/butter-hub/main/sof.txt'))()
+        elseif game.PlaceId == 2888719930 then
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/thombomb2009/butter-hub/main/Boxing_Simulator_2%20(1).txt'))()
+        end
+end)
+
+Games_1Section:NewButton("Adopt Me",  "Gives you a gui for Adopt Me!", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/1201for/V.G-Hub/main/V.Ghub'))()
+end)
+
+Games_1Section:NewButton("Arsenal",  "Gives you a gui for Arsenal!", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/fusiongreg/BoltsHubV5/main/Main", true))()
+end)
+
+Games_1Section:NewButton("Bee Swarm Simulator",  "Gives you a gui for Bee Swarm Simulator!", function()
+    shared.autoload = false
+    loadstring(game:GetObjects("rbxassetid://4384103988")[0X1].Source)("Pepsi Swarm")
+end)
+
+Games_1Section:NewButton("Bloxburg", "Gives you a gui for Bloxburg!", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/PainfulDestroyer/Roblox/main/Scar%20Hub"))()
+end)
+
+Games_1Section:NewButton("Pet Simulator X", "Gives you a gui for Pet Simulator X!", function()
+    loadstring(game:HttpGet"https://raw.githubusercontent.com/sinnx32/prx/main/Petsim")()
+end)
+
+Games_1Section:NewButton("Weapon Fighting Simulator", "Gives you a gui for Weapon Fighting Simulator!", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ZaRdoOx/Ultra-Hub/main/Main"))()
+end)
+
+Games_1Section:NewButton("Blox Fruits", "Gives you a gui for Blox Fruits!", function()
+    loadstring(game:HttpGet"https://raw.githubusercontent.com/xQuartyx/DonateMe/main/ScriptLoader")()
+end)
+
+--GAMES 2
+local Games_2 = Window:NewTab("Games_2")
+local Games_2Section = Games_2:NewSection("              GAMES_2 SCRIPTS COMING SOON!")
+
+--OTHERS
+local Other = Window:NewTab("Other")
+local OtherSection = Other:NewSection("                            OTHER SCRIPTS")
+
+OtherSection:NewButton("BTools (Delete Tool Only)", "Gives you a delete tool!", function()
+    loadstring(game:HttpGet('https://pastebin.com/raw/LETNPL0E'))()
+end)
+
+OtherSection:NewButton("Chat Spoofer", "Makes you able to write funny messages in chat!", function()
+    loadstring(game:HttpGet(('https://pastebin.com/raw/djBfk8Li'),true))()
+end)
+
+OtherSection:NewButton("Swear Bypass", "Removes roblox chat filter!", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/daddysyn/synergy/additional/betterbypasser",true))() 
+end)
+  
+--CREDITS
+local Credits = Window:NewTab("Credits")
+local CreditsSection = Credits:NewSection("                                  CREDITS")
+
+CreditsSection:NewLabel("                        Made By WoXo#4508")
+
+CreditsSection:NewLabel("                        BETA Tester: XsaemuX")
+
+--COMING_SOON
+local Coming_Soon = Window:NewTab("Coming_Soon")
+local Coming_SoonSection = Coming_Soon:NewSection("                        MORE COMING SOON")
